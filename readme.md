@@ -14,11 +14,11 @@ Clone the repo, then install dependencies for both the backend and frontend.
 
 ```bash
 # Backend
-cd server
+cd backend
 npm install
 
 # Frontend
-cd ../client
+cd ../frontend
 npm install
 ```
 
@@ -35,14 +35,14 @@ Start the backend and frontend in separate terminals.
 **Backend** (runs on port 3001):
 
 ```bash
-cd server
-node server.js
+cd backend
+node .
 ```
 
 **Frontend** (runs on port 5173 by default):
 
 ```bash
-cd client
+cd frontend
 npm run dev
 ```
 
