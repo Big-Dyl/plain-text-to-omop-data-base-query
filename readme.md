@@ -22,7 +22,7 @@ cd ../frontend
 npm install
 ```
 
-Create a `.env` file in the `server/` directory:
+Create a `.env` file in the `backend/` directory:
 
 ```env
 API_KEY=your_anthropic_api_key_here
