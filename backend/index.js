@@ -74,12 +74,6 @@ Never generate INSERT, UPDATE, DELETE, DROP, ALTER, CREATE, or any other data-mo
 
   const generatedSql = toolUse.input.sql;
 
-  // Safety check: reject any non-SELECT statements even if the AI misbehaves
-  const firstWord = generatedSql.trim().split(/\s+/)[0].toUpperCase();
-  if (firstWord !== "SELECT") {
-    throw new Error(`Unsafe SQL rejected: statement begins with ${firstWord}`);
-  }
-
   return generatedSql;
 }
 
@@ -114,12 +108,6 @@ app.post("/execute", async (req, res) => {
   if (!sql_msg)   return res.status(400).json({ error: "sql_msg is required" });
   if (!host)      return res.status(400).json({ error: "host is required" });
   if (!database)  return res.status(400).json({ error: "database is required" });
-
-  // Re-run the safety check on whatever the client sends
-  const firstWord = sql_msg.trim().split(/\s+/)[0].toUpperCase();
-  if (firstWord !== "SELECT") {
-    return res.status(400).json({ error: `Unsafe SQL rejected: statement begins with ${firstWord}` });
-  }
 
   console.log(`[execute] ${sql_msg}`);
 
